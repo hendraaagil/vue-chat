@@ -1,0 +1,74 @@
+[
+  [
+    {
+      "id": "1",
+      "room_id": "313621130",
+      "sender": "System",
+      "sender_type": "system",
+      "text": "agent test joined this conversation",
+      "timestamp": "2025-04-23T03:51:15Z",
+      "is_own_message": false
+    },
+    {
+      "id": "2",
+      "room_id": "313621130",
+      "sender": "Khalil_Connelly79@gmail.com",
+      "sender_type": "user",
+      "text": "Hello, I need some assistance",
+      "timestamp": "2025-04-23T03:52:00Z",
+      "is_own_message": false
+    },
+    {
+      "id": "3",
+      "room_id": "313621130",
+      "sender": "Agent",
+      "sender_type": "agent",
+      "text": "Hello! How can I help you today?",
+      "timestamp": "2025-04-23T03:52:30Z",
+      "is_own_message": true
+    }
+  ],
+  [
+    {
+      "id": "7",
+      "room_id": "313621132",
+      "sender": "sarah.smith@example.com",
+      "sender_type": "user",
+      "text": "Can you help me with product information?",
+      "timestamp": "2025-04-23T05:22:45Z",
+      "is_own_message": false
+    },
+    {
+      "id": "8",
+      "room_id": "313621132",
+      "sender": "Agent",
+      "sender_type": "agent",
+      "text": "Of course! What product would you like to know about?",
+      "timestamp": "2025-04-23T05:23:00Z",
+      "is_own_message": true
+    },
+    {
+      "id": "9",
+      "room_id": "313621132",
+      "sender": "sarah.smith@example.com",
+      "sender_type": "user",
+      "text": "I am looking for a smartphone under $500",
+      "timestamp": "2025-04-23T05:23:30Z",
+      "is_own_message": false
+    },
+    {
+      "id": "10",
+      "room_id": "313621132",
+      "sender": "Agent",
+      "sender_type": "agent",
+      "text": "Here are some great options:",
+      "timestamp": "2025-04-23T05:24:00Z",
+      "is_own_message": true,
+      "product": {
+        "name": "Google Pixel 9",
+        "price": "Rp11.999.000",
+        "image_url": "https://images.unsplash.com/photo-1724438192699-89f587b04c24?w=200&h=200&fit=crop"
+      }
+    }
+  ]
+]

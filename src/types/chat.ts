@@ -32,3 +32,18 @@ export type CustomerRoom = {
   user_avatar_url: string
   user_id: string
 }
+
+export type ChatMessage = {
+  id: string
+  room_id: string
+  sender: string
+  sender_type: 'system' | 'user' | 'agent'
+  text: string
+  timestamp: string
+  is_own_message: boolean
+  product?: {
+    name: string
+    price: string
+    image_url: string
+  }
+}
