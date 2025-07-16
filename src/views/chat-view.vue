@@ -42,9 +42,7 @@ watch(
       <div class="border-b border-slate-200 p-4">
         <h2 class="text-xl font-semibold text-slate-800">Chat Rooms</h2>
       </div>
-      <div class="flex-1 overflow-y-auto">
-        <RoomList @select-room="selectRoom" />
-      </div>
+      <RoomList @select-room="selectRoom" />
     </div>
 
     <div v-if="!chatStore.currentRoom" class="flex flex-1 flex-col">

@@ -103,7 +103,7 @@ function sendMessage() {
       <button
         type="submit"
         :disabled="!newMessage.trim()"
-        class="rounded-lg bg-blue-500 px-6 py-2 text-white hover:bg-blue-600 disabled:cursor-not-allowed disabled:bg-gray-300"
+        class="rounded-lg bg-blue-500 px-6 py-2 text-white hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-300"
       >
         Send
       </button>
