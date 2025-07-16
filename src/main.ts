@@ -1,3 +1,4 @@
+import '@fontsource-variable/space-grotesk'
 import './assets/main.css'
 
 import { createApp } from 'vue'
