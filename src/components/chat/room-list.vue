@@ -1,29 +1,9 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
-import { watch } from 'vue'
-
 import { formatDate, replaceFileAttachments } from '@/lib/utils'
 import { useChatStore } from '@/stores/chat'
 
-const route = useRoute()
-const router = useRouter()
 const chatStore = useChatStore()
-
-function selectRoom(roomId: string) {
-  chatStore.setCurrentRoom(roomId)
-  if (route.params.roomId !== roomId) {
-    router.push({ name: 'chatRoom', params: { roomId } })
-  }
-}
-
-watch(
-  () => route.params.roomId,
-  (newRoomId) => {
-    if (newRoomId && typeof newRoomId === 'string') {
-      selectRoom(newRoomId)
-    }
-  },
-)
+const emit = defineEmits(['selectRoom'])
 </script>
 
 <template>
@@ -37,7 +17,7 @@ watch(
         'border-l-blue-500 bg-blue-50': room.room_id === chatStore.currentRoomId,
       },
     ]"
-    @click="selectRoom(room.room_id)"
+    @click="emit('selectRoom', room.room_id)"
   >
     <img
       :src="room.user_avatar_url"

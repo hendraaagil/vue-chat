@@ -1,15 +1,39 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { useChatStore } from '@/stores/chat'
+import { onMounted, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
+import { useChatStore } from '@/stores/chat'
 import RoomList from '@/components/chat/room-list.vue'
 import RoomChat from '@/components/chat/room-chat.vue'
 
+const route = useRoute()
+const router = useRouter()
 const chatStore = useChatStore()
+
+function selectRoom(roomId: string) {
+  chatStore.setCurrentRoom(roomId)
+  if (route.params.roomId !== roomId) {
+    router.push({ name: 'chatRoom', params: { roomId } })
+  }
+}
 
 onMounted(() => {
   chatStore.loadRooms()
+
+  const roomId = route.params.roomId as string
+  if (roomId) {
+    selectRoom(roomId)
+  }
 })
+
+watch(
+  () => route.params.roomId,
+  (newRoomId) => {
+    if (newRoomId && typeof newRoomId === 'string') {
+      selectRoom(newRoomId)
+    }
+  },
+)
 </script>
 
 <template>
@@ -19,7 +43,7 @@ onMounted(() => {
         <h2 class="text-xl font-semibold text-slate-800">Chat Rooms</h2>
       </div>
       <div class="flex-1 overflow-y-auto">
-        <RoomList />
+        <RoomList @select-room="selectRoom" />
       </div>
     </div>
 
