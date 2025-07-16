@@ -3,6 +3,7 @@ import { onMounted } from 'vue'
 import { useChatStore } from '@/stores/chat'
 
 import RoomList from '@/components/chat/room-list.vue'
+import RoomChat from '@/components/chat/room-chat.vue'
 
 const chatStore = useChatStore()
 
@@ -22,13 +23,16 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="flex flex-1 flex-col">
+    <div v-if="!chatStore.currentRoom" class="flex flex-1 flex-col">
       <div class="flex flex-1 items-center justify-center">
         <div class="text-center">
           <h3 class="mb-2 text-xl font-semibold text-slate-900">Welcome to Chat</h3>
           <p class="text-slate-500">Select a room to start chatting</p>
         </div>
       </div>
+    </div>
+    <div v-else class="flex flex-1 flex-col">
+      <RoomChat />
     </div>
   </div>
 </template>
