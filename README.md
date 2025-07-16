@@ -1,39 +1,104 @@
-# vue-chat
+# Vue Chat Application
 
-This template should help get you started developing with Vue 3 in Vite.
+A chat application built with Vue 3, TypeScript, and Vite. This application features a clean, responsive interface with room-based messaging capabilities.
 
-## Recommended IDE Setup
+## 🚀 Quick Start
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+### Prerequisites
 
-## Type Support for `.vue` Imports in TS
+Before running this project locally, ensure you have the following installed:
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- **Node.js** (version 22 or higher)
+- **pnpm** (recommended package manager)
 
-## Customize configuration
+### Installation & Setup
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+1. **Clone the repository** (if not already cloned):
 
-## Project Setup
+   ```sh
+   git clone <repository-url>
+   cd vue-chat
+   ```
 
-```sh
-pnpm install
+2. **Install dependencies**:
+
+   ```sh
+   pnpm install
+   ```
+
+3. **Start the development server**:
+
+   ```sh
+   pnpm dev
+   ```
+
+4. **Open your browser** and navigate to:
+
+   ```
+   http://localhost:5173
+   ```
+
+The application will automatically reload when you make changes to the source code.
+
+## 📁 Project Structure
+
+```
+vue-chat/
+├── src/
+│   ├── components/      # Reusable Vue components
+│   │   └── chat/        # Chat-specific components
+│   ├── views/           # Page-level components
+│   ├── stores/          # Pinia state management
+│   ├── router/          # Vue Router configuration
+│   ├── types/           # TypeScript type definitions
+│   ├── data/            # Mock data files
+│   └── lib/             # Utility functions
+├── public/              # Static assets
+└── package.json         # Project dependencies and scripts
 ```
 
-### Compile and Hot-Reload for Development
+## 🔧 Development Workflow
 
-```sh
-pnpm dev
-```
+### Running the Application
 
-### Type-Check, Compile and Minify for Production
+1. **Development Mode**:
 
-```sh
-pnpm build
-```
+   ```sh
+   pnpm dev
+   ```
 
-### Lint with [ESLint](https://eslint.org/)
+2. **Production Preview**:
 
-```sh
-pnpm lint
-```
+   ```sh
+   pnpm build
+   pnpm preview
+   ```
+
+### Code Quality
+
+- **Type Checking**: The project uses TypeScript for type safety
+
+  ```sh
+  pnpm type-check
+  ```
+
+- **Linting**: ESLint is configured for code quality
+
+  ```sh
+  pnpm lint
+  ```
+
+- **Formatting**: Prettier handles code formatting
+  ```sh
+  pnpm format
+  ```
+
+## 🔧 Tech Stack
+
+- **Frontend Framework**: Vue 3 with Composition API
+- **Build Tool**: Vite
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **State Management**: Pinia
+- **Routing**: Vue Router
+- **Development Tools**: Vue DevTools, ESLint, Prettier
