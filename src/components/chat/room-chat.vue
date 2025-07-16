@@ -1,8 +1,17 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { formatDate } from '@/lib/utils'
 import { useChatStore } from '@/stores/chat'
 
 const chatStore = useChatStore()
+const newMessage = ref('')
+
+function sendMessage() {
+  if (newMessage.value.trim()) {
+    chatStore.sendMessage(newMessage.value)
+    newMessage.value = ''
+  }
+}
 </script>
 
 <template>
@@ -41,7 +50,10 @@ const chatStore = useChatStore()
       <div
         :class="[
           'max-w-xs rounded-lg px-4 py-2 lg:max-w-md',
-          message.is_own_message ? 'bg-blue-500 text-white' : 'bg-slate-200 text-slate-900',
+          {
+            'bg-blue-500 text-white': message.is_own_message,
+            'bg-slate-200 text-slate-900': !message.is_own_message,
+          },
         ]"
       >
         <p class="text-sm">{{ message.text }}</p>
@@ -78,5 +90,23 @@ const chatStore = useChatStore()
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="border-t border-gray-200 bg-white p-4">
+    <form @submit.prevent="sendMessage" class="flex space-x-2">
+      <input
+        v-model="newMessage"
+        type="text"
+        placeholder="Type a message..."
+        class="flex-1 rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
+      <button
+        type="submit"
+        :disabled="!newMessage.trim()"
+        class="rounded-lg bg-blue-500 px-6 py-2 text-white hover:bg-blue-600 disabled:cursor-not-allowed disabled:bg-gray-300"
+      >
+        Send
+      </button>
+    </form>
   </div>
 </template>
