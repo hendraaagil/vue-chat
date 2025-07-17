@@ -1,15 +1,39 @@
 <script setup lang="ts">
+import { ref, nextTick, watchEffect } from 'vue'
 import { formatDate, replaceFileAttachments } from '@/lib/utils'
 import { useChatStore } from '@/stores/chat'
 
-const chatStore = useChatStore()
 const emit = defineEmits(['selectRoom'])
+const chatStore = useChatStore()
+const roomListRef = ref<HTMLElement>()
+
+const scrollToActiveRoom = async () => {
+  await nextTick()
+  if (!roomListRef.value || !chatStore.currentRoomId) return
+
+  const activeRoomElement = roomListRef.value.querySelector(
+    `[data-room-id="${chatStore.currentRoomId}"]`,
+  )
+  if (activeRoomElement) {
+    activeRoomElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+    })
+  }
+}
+
+watchEffect(() => {
+  if (chatStore.currentRoomId) {
+    scrollToActiveRoom()
+  }
+})
 </script>
 
 <template>
-  <ul class="flex-1 space-y-0.5 overflow-y-auto p-0.5">
+  <ul ref="roomListRef" class="flex-1 space-y-0.5 overflow-y-auto p-0.5">
     <li v-for="room in chatStore.rooms" :key="room.room_id" class="border-b border-b-slate-100">
       <button
+        :data-room-id="room.room_id"
         :class="[
           'flex w-full cursor-pointer items-center border-l-4 py-4 pr-4 pl-3 text-start transition-colors hover:bg-slate-50 focus:ring-1 focus:ring-slate-300 focus:outline-none',
           {
