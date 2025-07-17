@@ -16,7 +16,7 @@ Before running this project locally, ensure you have the following installed:
 1. **Clone the repository** (if not already cloned):
 
    ```sh
-   git clone <repository-url>
+   git clone https://github.com/hendraaagil/vue-chat
    cd vue-chat
    ```
 
